@@ -1,0 +1,6 @@
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\LibraryDataAccessLayer\bin\Debug\LibraryDataAccessLayer.dll
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\LibraryDataAccessLayer\bin\Debug\LibraryDataAccessLayer.pdb
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\LibraryDataAccessLayer\obj\Debug\LibraryDataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\LibraryDataAccessLayer\obj\Debug\LibraryDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\LibraryDataAccessLayer\obj\Debug\LibraryDataAccessLayer.dll
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\LibraryDataAccessLayer\obj\Debug\LibraryDataAccessLayer.pdb

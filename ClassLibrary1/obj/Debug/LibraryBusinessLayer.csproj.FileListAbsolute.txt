@@ -1,0 +1,9 @@
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\bin\Debug\LibraryDataAccessLayer.dll
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\bin\Debug\LibraryDataAccessLayer.pdb
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\obj\Debug\LibraryBusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\obj\Debug\LibraryBusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\obj\Debug\LibraryBusinessLayer.csproj.CopyComplete
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

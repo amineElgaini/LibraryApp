@@ -1,0 +1,14 @@
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\bin\Debug\ClassLibrary1.dll
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources

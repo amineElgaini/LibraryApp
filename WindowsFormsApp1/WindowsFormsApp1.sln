@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1.csproj", "{E11DF499-B3B5-474E-BF8D-F441BC26229C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library.csproj", "{E11DF499-B3B5-474E-BF8D-F441BC26229C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "..\ClassLibrary1\ClassLibrary1.csproj", "{DDF297C4-21EF-4E7F-AADC-253C11811701}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryBusinessLayer", "..\ClassLibrary1\LibraryBusinessLayer.csproj", "{DDF297C4-21EF-4E7F-AADC-253C11811701}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDataAccessLayer", "..\LibraryDataAccessLayer\LibraryDataAccessLayer.csproj", "{8F36B4CB-5049-4164-B25F-E4B7CFD62340}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DDF297C4-21EF-4E7F-AADC-253C11811701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDF297C4-21EF-4E7F-AADC-253C11811701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDF297C4-21EF-4E7F-AADC-253C11811701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F36B4CB-5049-4164-B25F-E4B7CFD62340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F36B4CB-5049-4164-B25F-E4B7CFD62340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F36B4CB-5049-4164-B25F-E4B7CFD62340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F36B4CB-5049-4164-B25F-E4B7CFD62340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
