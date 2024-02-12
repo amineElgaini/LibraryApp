@@ -30,7 +30,7 @@ namespace LibraryBusinessLayer
             this.BirthDate = BirthDate;
             this.LibraryCardNumber = LibraryCardNumber;
             this.Image = Image;
-
+            mode = Mode.edit;
         }
 
         public static clsUsers FindUserById(int id)
@@ -81,7 +81,7 @@ namespace LibraryBusinessLayer
                     break;
 
                 case Mode.edit:
-                    if (UsersData.UpdateUser(UserId, Name, Email, LibraryCardNumber, Image, BirthDate)) {
+                    if (UsersData.UpdateUser(UserId, Name, LibraryCardNumber, Email, Image, BirthDate)) {
                         return true;
                     }
                     break;

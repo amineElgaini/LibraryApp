@@ -90,7 +90,7 @@ namespace LibraryDataAccessLayer
                     Email = @Email,
                     LibraryCardNumber = @LibraryCardNumber,
                     image = @image,
-                    BirthDate = @BirthDate,
+                    BirthDate = @BirthDate
                 WHERE
                     UserID = @UserID
                 ";
@@ -124,7 +124,7 @@ namespace LibraryDataAccessLayer
             return (updatedRows > 0);
         }
 
-        public static int AddUser(string Name, string LibraryCardNumber, string Email, string image, DateTime BirthDate)
+        public static int AddUser(string Name, string Email, string LibraryCardNumber, string image, DateTime BirthDate)
         {
             int newId = -1;
 

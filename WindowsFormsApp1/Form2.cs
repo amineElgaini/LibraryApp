@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
                 User = new clsUsers();
             else
             {
-                clsUsers User = clsUsers.FindUserById(userId);
+                User = clsUsers.FindUserById(userId);
 
                 if (User == null)
                 {
@@ -73,6 +73,7 @@ namespace WindowsFormsApp1
         {
             User.Name = textBoxName.Text;
             User.Email = textBoxEmail.Text;
+
             if (pictureBoxUserImage.ImageLocation == null)
                 User.Image = "";
             else
@@ -80,14 +81,27 @@ namespace WindowsFormsApp1
 
             User.BirthDate = dateTimePickerBirthDate.Value;
 
-            MessageBox.Show(User.BirthDate.ToString());
 
             if (User.Save()) {
-                MessageBox.Show("User Added Successful");
+                if (mode == Mode.add)
+                {
+                    MessageBox.Show("User Added Successful");
+                } else
+                {
+                    MessageBox.Show("User Updated Successful");
+                }
             } else
             {
-                MessageBox.Show("User Is Not Added Successful");
+                if (mode == Mode.add)
+                {
+                    MessageBox.Show("User Is Not Added Successful");
+                }
+                else
+                {
+                    MessageBox.Show("User Is Not Updated Successful");
+                }
             }
+
             this.Close();
         }
 

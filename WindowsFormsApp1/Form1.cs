@@ -18,15 +18,22 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        private void _ReloadUsers()
+        {
+
+            dataGridViewUsers.DataSource = clsUsers.GetAllUsers();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridViewUsers.DataSource = clsUsers.GetAllUsers();
+            _ReloadUsers();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             Form addUser = new Form2();
             addUser.ShowDialog();
+            _ReloadUsers();
         }
 
         private void tabUsers_Click(object sender, EventArgs e)
@@ -48,6 +55,7 @@ namespace WindowsFormsApp1
         {
             Form addUser = new Form2((int)dataGridViewUsers.CurrentRow.Cells[0].Value);
             addUser.ShowDialog();
+            _ReloadUsers();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
