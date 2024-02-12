@@ -10,7 +10,73 @@ namespace LibraryDataAccessLayer
 {
     public class UsersData
     {
-        public static bool UpdateUser(int UserID, string Name, string LibraryCardNumber, string ContactInformation, string Image)
+
+        public static bool GetUserInfoByID(int ID, ref string Name, ref string Email, ref DateTime BirthDate,
+            ref string LibraryCardNumber, ref string image)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM Users WHERE UserId = @ID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ID", ID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    Name = (string)reader["Name"];
+                    Email = (string)reader["Email"];
+                    if (reader["BirthDate"] != DBNull.Value)
+                    {
+                        BirthDate = (DateTime)reader["BirthDate"];
+                    } else
+                    {
+                        BirthDate = DateTime.Today;
+                    }
+                    LibraryCardNumber = (string)reader["LibraryCardNumber"];
+
+                    //imagePath: allows null in database so we should handle null
+                    if (reader["image"] != DBNull.Value)
+                    {
+                        image = (string)reader["image"];
+                    }
+                    else
+                    {
+                        image = "";
+                    }
+
+                }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool UpdateUser(int UserID, string Name, string LibraryCardNumber, string Email, string image, DateTime BirthDate)
         {
             int updatedRows = 0;
 
@@ -21,9 +87,10 @@ namespace LibraryDataAccessLayer
                     Users
                 SET
                     name = @name,
-                    ContactInformation = @ContactInformation,
+                    Email = @Email,
                     LibraryCardNumber = @LibraryCardNumber,
-                    image = @Image,
+                    image = @image,
+                    BirthDate = @BirthDate,
                 WHERE
                     UserID = @UserID
                 ";
@@ -31,10 +98,15 @@ namespace LibraryDataAccessLayer
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@UserID", UserID);
-            command.Parameters.AddWithValue("@ContactInformation", ContactInformation);
+            command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@LibraryCardNumber", LibraryCardNumber);
             command.Parameters.AddWithValue("@Name", Name);
-            command.Parameters.AddWithValue("@Image", Image);
+            command.Parameters.AddWithValue("@BirthDate", BirthDate);
+
+            if (image != "" && image != null)
+                command.Parameters.AddWithValue("@image", image);
+            else
+                command.Parameters.AddWithValue("@image", System.DBNull.Value);
 
             try
             {
@@ -52,52 +124,49 @@ namespace LibraryDataAccessLayer
             return (updatedRows > 0);
         }
 
-        public static bool AddUser(int UserID, string Name, string LibraryCardNumber, string ContactInformation, string Image)
+        public static int AddUser(string Name, string LibraryCardNumber, string Email, string image, DateTime BirthDate)
         {
-            int updatedRows = 0;
+            int newId = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"
-                INSERT INTO
-                    Users
-                VALUES(
-                    null,
-                    @name,
-                    @ContactInformation,
-                    @LibraryCardNumber,
-                    @Iamge,
-                );
-                   
-                ";
+            //                SELECT SCOPE_IDENTITY();
+            string query = @"INSERT INTO Users (Name, Email, LibraryCardNumber, image ,BirthDate) VALUES (@Name, @Email, @LibraryCardNumber, @image, @BirthDate);
+            SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@UserID", UserID);
-            command.Parameters.AddWithValue("@ContactInformation", ContactInformation);
+            command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@LibraryCardNumber", LibraryCardNumber);
             command.Parameters.AddWithValue("@Name", Name);
-            if (Image != "" && Image != null)
-                command.Parameters.AddWithValue("@image", Image);
+            command.Parameters.AddWithValue("@BirthDate", BirthDate);
+
+            if (image != "" && image != null)
+                command.Parameters.AddWithValue("@image", image);
             else
                 command.Parameters.AddWithValue("@image", System.DBNull.Value);
+
 
             try
             {
                 connection.Open();
 
-                updatedRows = command.ExecuteNonQuery();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    newId = insertedID;
+                }
             }
             catch
             {
-                return false;
+                return newId;
             }
             finally
             {
                 connection.Close();
             }
 
-            return (updatedRows > 0);
+            return (newId);
         }
 
         public static DataTable GetAllUsers() {
