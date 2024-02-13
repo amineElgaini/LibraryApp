@@ -33,21 +33,22 @@
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabBooks = new System.Windows.Forms.TabPage();
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.tabBorrowing = new System.Windows.Forms.TabPage();
             this.dataGridViewBorrowing = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddBook = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.tabBooks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             this.tabBorrowing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBorrowing)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -100,8 +101,31 @@
             this.dataGridViewUsers.TabIndex = 0;
             this.dataGridViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellContentClick);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // tabBooks
             // 
+            this.tabBooks.Controls.Add(this.btnAddBook);
             this.tabBooks.Controls.Add(this.dataGridViewBooks);
             this.tabBooks.Location = new System.Drawing.Point(4, 22);
             this.tabBooks.Name = "tabBooks";
@@ -110,6 +134,7 @@
             this.tabBooks.TabIndex = 1;
             this.tabBooks.Text = "Books";
             this.tabBooks.UseVisualStyleBackColor = true;
+            this.tabBooks.Click += new System.EventHandler(this.tabBooks_Click);
             // 
             // dataGridViewBooks
             // 
@@ -123,6 +148,7 @@
             this.dataGridViewBooks.ReadOnly = true;
             this.dataGridViewBooks.Size = new System.Drawing.Size(786, 330);
             this.dataGridViewBooks.TabIndex = 1;
+            this.dataGridViewBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooks_CellContentClick);
             // 
             // tabBorrowing
             // 
@@ -147,27 +173,16 @@
             this.dataGridViewBorrowing.Size = new System.Drawing.Size(792, 330);
             this.dataGridViewBorrowing.TabIndex = 2;
             // 
-            // contextMenuStrip1
+            // btnAddBook
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.btnAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddBook.Location = new System.Drawing.Point(8, 48);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.Size = new System.Drawing.Size(99, 37);
+            this.btnAddBook.TabIndex = 2;
+            this.btnAddBook.Text = "Add Book";
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
             // 
             // Form1
             // 
@@ -181,11 +196,11 @@
             this.tabControl1.ResumeLayout(false);
             this.tabUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tabBooks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).EndInit();
             this.tabBorrowing.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBorrowing)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -203,6 +218,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.Button btnAddBook;
     }
 }
 

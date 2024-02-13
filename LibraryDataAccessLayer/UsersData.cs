@@ -129,7 +129,6 @@ namespace LibraryDataAccessLayer
             int newId = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            //                SELECT SCOPE_IDENTITY();
             string query = @"INSERT INTO Users (Name, Email, LibraryCardNumber, image ,BirthDate) VALUES (@Name, @Email, @LibraryCardNumber, @image, @BirthDate);
             SELECT SCOPE_IDENTITY();";
 

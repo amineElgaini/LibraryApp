@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibrary1;
 using LibraryBusinessLayer;
 
 namespace WindowsFormsApp1
@@ -24,9 +25,17 @@ namespace WindowsFormsApp1
             dataGridViewUsers.DataSource = clsUsers.GetAllUsers();
         }
 
+        private void _ReloadBooks()
+        {
+
+            dataGridViewBooks.DataSource = clsBooks.FetchBooks();
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             _ReloadUsers();
+            _ReloadBooks();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -61,6 +70,21 @@ namespace WindowsFormsApp1
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridViewBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabBooks_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(clsBooks.AddBook().ToString());
         }
     }
 }
