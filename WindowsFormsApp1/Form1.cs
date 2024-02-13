@@ -9,11 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClassLibrary1;
 using LibraryBusinessLayer;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        bool UserIsAdded = false;
+        bool UserIsUpdated = false;
+        
+        bool BookIsAdded = false;
+        bool BookIsUpdated = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -40,9 +47,83 @@ namespace WindowsFormsApp1
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            Form addUser = new Form2();
+            AddUserForm addUser = new AddUserForm();
+            addUser.DataBack += ChangeUserToAdded;
             addUser.ShowDialog();
+
+            if (UserIsAdded)
+            {
+                MessageBox.Show("User Is Added Successfully");
+                UserIsAdded = false;
+            } else
+            {
+                MessageBox.Show("No User Is Added");
+            }
+
             _ReloadUsers();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddUserForm addUser = new AddUserForm((int)dataGridViewUsers.CurrentRow.Cells[0].Value);
+
+            addUser.DataBack += ChangeUserToUpdated;
+            addUser.ShowDialog();
+
+            if (UserIsUpdated)
+            {
+                MessageBox.Show("User Is Updated Successfully");
+                UserIsUpdated = false;
+            }
+            else
+            {
+                MessageBox.Show("User Is Not Updated");
+            }
+
+            _ReloadUsers();
+        }
+
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            //clsBooks.AddBook().ToString();
+
+            AddBookForm addBook = new AddBookForm();
+            addBook.DataBack += ChangeBookToUpdated;
+            addBook.ShowDialog();
+
+            if (BookIsUpdated)
+            {
+                MessageBox.Show("Book Is Updated Successfully");
+                BookIsUpdated = false;
+            }
+            else
+            {
+                MessageBox.Show("Book Is Not Updated");
+            }
+        }
+
+        private void ChangeUserToAdded(object sender)
+        {
+            this.UserIsAdded = true;
+        }
+
+        private void ChangeUserToUpdated(object sender)
+        {
+            this.UserIsUpdated = true;
+        }
+        private void ChangeBookToAdded(object sender)
+        {
+            this.BookIsAdded = true;
+        }
+
+        private void ChangeBookToUpdated(object sender)
+        {
+            this.BookIsUpdated = true;
+        }
+
+        private void detailInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void tabUsers_Click(object sender, EventArgs e)
@@ -50,41 +131,22 @@ namespace WindowsFormsApp1
 
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form addUser = new Form2((int)dataGridViewUsers.CurrentRow.Cells[0].Value);
-            addUser.ShowDialog();
-            _ReloadUsers();
-        }
-
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if ((MessageBox.Show("Are You Sure?", "Make Sure", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK) && clsUsers.DeleteUser((int)dataGridViewUsers.CurrentRow.Cells[0].Value))
+            {
+                MessageBox.Show("User Is Deleted");
 
-        }
+            } else
+            {
+                MessageBox.Show("User Is Not Deleted");
 
-        private void dataGridViewBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            }
         }
 
         private void tabBooks_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnAddBook_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(clsBooks.AddBook().ToString());
         }
     }
 }

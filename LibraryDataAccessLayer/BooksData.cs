@@ -44,7 +44,7 @@ namespace LibraryDataAccessLayer
             return dt;
         }
 
-        public static int AddBook(string Title, string ISBN, string PublicationDate, string Genre, string AdditionalDetails, int Copies) {
+        public static int AddBook(string Title, string ISBN, DateTime PublicationDate, string Genre, string AdditionalDetails, int Copies, string Image) {
             int newId = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -58,7 +58,9 @@ INSERT INTO [dbo].[Books]
            ,[Genre]
            ,[AdditionalDetails]
            ,[AvailableCopies]
-           ,[copies])
+           ,[copies]
+           ,[Image]
+)
      VALUES
            (@Title
            ,@ISBN
@@ -66,7 +68,8 @@ INSERT INTO [dbo].[Books]
            ,@Genre
            ,@AdditionalDetails
            ,@copies
-           ,@copies);
+           ,@copies
+           ,@Image);
 
             SELECT SCOPE_IDENTITY();
             ";
@@ -79,6 +82,7 @@ INSERT INTO [dbo].[Books]
             command.Parameters.AddWithValue("@Genre", Genre);
             command.Parameters.AddWithValue("@AdditionalDetails", AdditionalDetails);
             command.Parameters.AddWithValue("@copies", Copies);
+            command.Parameters.AddWithValue("@Image", Image);
 
 
             try

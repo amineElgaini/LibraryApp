@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LibraryDataAccessLayer
 {
@@ -44,7 +45,6 @@ namespace LibraryDataAccessLayer
                     }
                     LibraryCardNumber = (string)reader["LibraryCardNumber"];
 
-                    //imagePath: allows null in database so we should handle null
                     if (reader["image"] != DBNull.Value)
                     {
                         image = (string)reader["image"];
@@ -166,6 +166,37 @@ namespace LibraryDataAccessLayer
             }
 
             return (newId);
+        }
+
+
+        public static bool DeleteUser(int id)
+        {
+
+            int result = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "Delete FROM Users WHERE userID = @userID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@userID", id);
+
+            try
+            {
+                connection.Open();
+
+                result = command.ExecuteNonQuery();
+
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (result > 0);
+
         }
 
         public static DataTable GetAllUsers() {

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form2
+    partial class AddUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -104,7 +104,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Save";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -151,7 +151,6 @@
             this.dateTimePickerBirthDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerBirthDate.TabIndex = 13;
             this.dateTimePickerBirthDate.Value = new System.DateTime(2024, 2, 12, 12, 43, 17, 0);
-            this.dateTimePickerBirthDate.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label3
             // 

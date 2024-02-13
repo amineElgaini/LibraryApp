@@ -69,6 +69,11 @@ namespace LibraryBusinessLayer
             return (this.UserId > -1);
         }
 
+        public static bool DeleteUser(int id)
+        {
+            return UsersData.DeleteUser(id);
+        }
+
         public bool Save ()
         {
             switch (mode) {

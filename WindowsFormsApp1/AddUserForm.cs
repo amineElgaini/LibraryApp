@@ -13,15 +13,20 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form2 : Form
+    public partial class AddUserForm : Form
     {
+
+        public delegate void DataBackEventHandler(object sender);
+        public event DataBackEventHandler DataBack;
+
         enum Mode {edit, add};
         Mode mode;
 
         int userId = -1;
         clsUsers User;
 
-        public Form2(int id = -1)
+
+        public AddUserForm(int id = -1)
         {
             InitializeComponent();
 
@@ -85,29 +90,18 @@ namespace WindowsFormsApp1
             if (User.Save()) {
                 if (mode == Mode.add)
                 {
-                    MessageBox.Show("User Added Successful");
-                } else
-                {
-                    MessageBox.Show("User Updated Successful");
-                }
-            } else
-            {
-                if (mode == Mode.add)
-                {
-                    MessageBox.Show("User Is Not Added Successful");
+                    DataBack?.Invoke(this);
                 }
                 else
                 {
-                    MessageBox.Show("User Is Not Updated Successful");
+                    DataBack?.Invoke(this);
                 }
             }
 
             this.Close();
+
         }
 
-        private void pictureBoxUserImage_Click(object sender, EventArgs e)
-        {
-        }
 
         private void linkLabelRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -141,9 +135,6 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }

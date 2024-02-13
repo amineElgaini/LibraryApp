@@ -36,11 +36,13 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabBooks = new System.Windows.Forms.TabPage();
+            this.btnAddBook = new System.Windows.Forms.Button();
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.tabBorrowing = new System.Windows.Forms.TabPage();
             this.dataGridViewBorrowing = new System.Windows.Forms.DataGridView();
-            this.btnAddBook = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
@@ -99,29 +101,36 @@
             this.dataGridViewUsers.ReadOnly = true;
             this.dataGridViewUsers.Size = new System.Drawing.Size(786, 330);
             this.dataGridViewUsers.TabIndex = 0;
-            this.dataGridViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellContentClick);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+            this.deleteToolStripMenuItem,
+            this.detailInfoToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 70);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // detailInfoToolStripMenuItem
+            // 
+            this.detailInfoToolStripMenuItem.Name = "detailInfoToolStripMenuItem";
+            this.detailInfoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.detailInfoToolStripMenuItem.Text = "DetailInfo";
+            this.detailInfoToolStripMenuItem.Click += new System.EventHandler(this.detailInfoToolStripMenuItem_Click);
             // 
             // tabBooks
             // 
@@ -136,6 +145,17 @@
             this.tabBooks.UseVisualStyleBackColor = true;
             this.tabBooks.Click += new System.EventHandler(this.tabBooks_Click);
             // 
+            // btnAddBook
+            // 
+            this.btnAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddBook.Location = new System.Drawing.Point(8, 48);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.Size = new System.Drawing.Size(99, 37);
+            this.btnAddBook.TabIndex = 2;
+            this.btnAddBook.Text = "Add Book";
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
+            // 
             // dataGridViewBooks
             // 
             this.dataGridViewBooks.AllowUserToAddRows = false;
@@ -148,7 +168,6 @@
             this.dataGridViewBooks.ReadOnly = true;
             this.dataGridViewBooks.Size = new System.Drawing.Size(786, 330);
             this.dataGridViewBooks.TabIndex = 1;
-            this.dataGridViewBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooks_CellContentClick);
             // 
             // tabBorrowing
             // 
@@ -172,17 +191,6 @@
             this.dataGridViewBorrowing.ReadOnly = true;
             this.dataGridViewBorrowing.Size = new System.Drawing.Size(792, 330);
             this.dataGridViewBorrowing.TabIndex = 2;
-            // 
-            // btnAddBook
-            // 
-            this.btnAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddBook.Location = new System.Drawing.Point(8, 48);
-            this.btnAddBook.Name = "btnAddBook";
-            this.btnAddBook.Size = new System.Drawing.Size(99, 37);
-            this.btnAddBook.TabIndex = 2;
-            this.btnAddBook.Text = "Add Book";
-            this.btnAddBook.UseVisualStyleBackColor = true;
-            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
             // 
             // Form1
             // 
@@ -219,6 +227,8 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Button btnAddBook;
+        private System.Windows.Forms.ToolStripMenuItem detailInfoToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
