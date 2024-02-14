@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace LibraryDataAccessLayer
 {
@@ -39,7 +34,8 @@ namespace LibraryDataAccessLayer
                     if (reader["BirthDate"] != DBNull.Value)
                     {
                         BirthDate = (DateTime)reader["BirthDate"];
-                    } else
+                    }
+                    else
                     {
                         BirthDate = DateTime.Today;
                     }
@@ -113,10 +109,12 @@ namespace LibraryDataAccessLayer
                 connection.Open();
 
                 updatedRows = command.ExecuteNonQuery();
-            } catch
+            }
+            catch
             {
                 return false;
-            } finally
+            }
+            finally
             {
                 connection.Close();
             }
@@ -168,6 +166,87 @@ namespace LibraryDataAccessLayer
             return (newId);
         }
 
+        public static DataTable FindUsersById(int value)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM Users WHERE UserId = @value";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@value", value);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                // Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
+
+        public static DataTable FindUsersByName(string value)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM Users WHERE Name like '%' + @value + '%'";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@value", value);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                // Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
 
         public static bool DeleteUser(int id)
         {
@@ -199,7 +278,8 @@ namespace LibraryDataAccessLayer
 
         }
 
-        public static DataTable GetAllUsers() {
+        public static DataTable GetAllUsers()
+        {
 
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

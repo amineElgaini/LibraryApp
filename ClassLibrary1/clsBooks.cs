@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LibraryDataAccessLayer;
+using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using LibraryDataAccessLayer;
 
 namespace ClassLibrary1
 {
@@ -20,7 +15,8 @@ namespace ClassLibrary1
         public int Copies { get; set; }
         public string Image { get; set; }
 
-        public clsBooks() {
+        public clsBooks()
+        {
             BookID = -1;
             Title = "";
             ISBN = "";
@@ -36,6 +32,10 @@ namespace ClassLibrary1
             return BooksData.FetchBooks();
         }
 
+        public static bool DeleteBook(int id)
+        {
+            return BooksData.DeleteBook(id);
+        }
 
         public bool Save()
         {

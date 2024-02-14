@@ -10,21 +10,26 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class CtrlUserInfo : UserControl
+    public partial class ctrUserSearch : UserControl
     {
-        public CtrlUserInfo()
+        public ctrUserSearch()
         {
             InitializeComponent();
         }
 
-        private void ctrUserInfo_Load(object sender, EventArgs e)
+        private void ctrUserSearch_Load(object sender, EventArgs e)
         {
 
         }
 
-        public void LoadPersonInfo()
+        }
+        private void ctrUserSearchNav1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ctrUserInfo1_Load(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -1,15 +1,6 @@
 ﻿using LibraryBusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Contracts;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1
 {
@@ -19,7 +10,7 @@ namespace WindowsFormsApp1
         public delegate void DataBackEventHandler(object sender);
         public event DataBackEventHandler DataBack;
 
-        enum Mode {edit, add};
+        enum Mode { edit, add };
         Mode mode;
 
         int userId = -1;
@@ -66,7 +57,7 @@ namespace WindowsFormsApp1
                 dateTimePickerBirthDate.Value = User.BirthDate;
             }
 
-            
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -87,7 +78,8 @@ namespace WindowsFormsApp1
             User.BirthDate = dateTimePickerBirthDate.Value;
 
 
-            if (User.Save()) {
+            if (User.Save())
+            {
                 if (mode == Mode.add)
                 {
                     DataBack?.Invoke(this);
@@ -127,7 +119,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-       
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -135,6 +127,6 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
- 
+
     }
 }

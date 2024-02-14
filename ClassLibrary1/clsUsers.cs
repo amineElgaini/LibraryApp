@@ -1,28 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LibraryDataAccessLayer;
+using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using LibraryDataAccessLayer;
+using System.Dynamic;
+using System.Net;
+using System.Security.Policy;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace LibraryBusinessLayer
 {
     public class clsUsers
     {
-        enum Mode {add, edit};
+        enum Mode { add, edit };
         Mode mode;
 
-        private int UserId;
-        public string Name {get; set;}
-        public string Email { get; set;}
-        public string LibraryCardNumber { get; set;}
-        public DateTime BirthDate { get; set;}
-        public string Image { get; set;}
-        
-        public clsUsers(int id, string Name, string Email, DateTime BirthDate, string  LibraryCardNumber, string Image)
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string LibraryCardNumber { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Image { get; set; }
+
+        public static DataTable FindUsersByName(string value)
+        {
+            return UsersData.FindUsersByName(value);
+        }
+
+        public static DataTable FindUsersById(int value)
+        {
+            return UsersData.FindUsersById(value);
+        }
+
+        public clsUsers(int id, string Name, string Email, DateTime BirthDate, string LibraryCardNumber, string Image)
         {
             this.UserId = id;
             this.Name = Name;
@@ -48,7 +56,7 @@ namespace LibraryBusinessLayer
 
             return null;
         }
-        
+
         public clsUsers()
         {
             UserId = -1;
@@ -69,24 +77,42 @@ namespace LibraryBusinessLayer
             return (this.UserId > -1);
         }
 
+        public static clsUsers GetUserByID(int id)
+        {
+            string Name = "";
+            string Email = "";
+            string LibraryCardNumber = "";
+            string Image = "";
+            DateTime BirthDate = DateTime.Now;
+
+            if (UsersData.GetUserInfoByID(id, ref  Name, ref Email, ref BirthDate,
+            ref LibraryCardNumber, ref Image))
+                return new clsUsers(id, Name, Email, BirthDate, LibraryCardNumber, Image);
+            else
+                    return null;
+        }
+
         public static bool DeleteUser(int id)
         {
             return UsersData.DeleteUser(id);
         }
 
-        public bool Save ()
+        public bool Save()
         {
-            switch (mode) {
+            switch (mode)
+            {
 
                 case Mode.add:
-                    if (_addUser(Name, Email, LibraryCardNumber, Image, BirthDate)) {
+                    if (_addUser(Name, Email, LibraryCardNumber, Image, BirthDate))
+                    {
                         mode = Mode.edit; // change mode after adding the user
                         return true;
                     }
                     break;
 
                 case Mode.edit:
-                    if (UsersData.UpdateUser(UserId, Name, LibraryCardNumber, Email, Image, BirthDate)) {
+                    if (UsersData.UpdateUser(UserId, Name, LibraryCardNumber, Email, Image, BirthDate))
+                    {
                         return true;
                     }
                     break;

@@ -41,6 +41,7 @@
             this.pictureBoxUserImage = new System.Windows.Forms.PictureBox();
             this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,7 +162,7 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Birth Date:";
             // 
-            // Form2
+            // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,7 +179,7 @@
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
-            this.Name = "Form2";
+            this.Name = "AddUserForm";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserImage)).EndInit();
@@ -202,5 +203,6 @@
         private System.Windows.Forms.PictureBox pictureBoxUserImage;
         private System.Windows.Forms.DateTimePicker dateTimePickerBirthDate;
         private System.Windows.Forms.Label label3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

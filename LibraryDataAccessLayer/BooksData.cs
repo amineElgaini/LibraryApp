@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryDataAccessLayer
 {
     public class BooksData
     {
-        public static DataTable FetchBooks() {
+        public static DataTable FetchBooks()
+        {
             DataTable dt = new DataTable();
 
 
@@ -34,9 +29,12 @@ namespace LibraryDataAccessLayer
                 }
 
                 reader.Close();
-            } catch (Exception ex) {
-                
-            } finally
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
             {
                 connection.Close();
             }
@@ -44,7 +42,39 @@ namespace LibraryDataAccessLayer
             return dt;
         }
 
-        public static int AddBook(string Title, string ISBN, DateTime PublicationDate, string Genre, string AdditionalDetails, int Copies, string Image) {
+        public static bool DeleteBook(int id)
+        {
+
+            int result = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"DELETE FROM BookCopies WHERE BookID = @BookID;
+                DELETE FROM Books WHERE BookID = @BookID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@BookID", id);
+
+            try
+            {
+                connection.Open();
+
+                result = command.ExecuteNonQuery();
+
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (result > 0);
+
+        }
+
+        public static int AddBook(string Title, string ISBN, DateTime PublicationDate, string Genre, string AdditionalDetails, int Copies, string Image)
+        {
             int newId = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -93,10 +123,12 @@ INSERT INTO [dbo].[Books]
                 {
                     newId = insertedID;
                 }
-            } catch
+            }
+            catch
             {
 
-            } finally { connection.Close(); }
+            }
+            finally { connection.Close(); }
             if (newId != -1)
                 AddCopies(newId, Copies);
 
@@ -132,15 +164,20 @@ INSERT INTO [dbo].[Books]
             {
                 connection.Open();
                 RowsAffected = command.ExecuteNonQuery();
-            } catch
+            }
+            catch
             {
 
-            } finally {
+            }
+            finally
+            {
                 connection.Close();
             }
 
             return RowsAffected;
 
         }
+
+
     }
 }

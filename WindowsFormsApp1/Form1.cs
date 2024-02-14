@@ -1,25 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ClassLibrary1;
+﻿using ClassLibrary1;
 using LibraryBusinessLayer;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        bool UserIsAdded = false;
-        bool UserIsUpdated = false;
-        
-        bool BookIsAdded = false;
-        bool BookIsUpdated = false;
+        bool isChanged = false;
 
         public Form1()
         {
@@ -48,39 +36,40 @@ namespace WindowsFormsApp1
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             AddUserForm addUser = new AddUserForm();
-            addUser.DataBack += ChangeUserToAdded;
+            addUser.DataBack += isChangedToTrue;
             addUser.ShowDialog();
 
-            if (UserIsAdded)
+            if (isChanged)
             {
                 MessageBox.Show("User Is Added Successfully");
-                UserIsAdded = false;
-            } else
+                _ReloadUsers();
+                isChanged = false;
+            }
+            else
             {
                 MessageBox.Show("No User Is Added");
             }
 
-            _ReloadUsers();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddUserForm addUser = new AddUserForm((int)dataGridViewUsers.CurrentRow.Cells[0].Value);
 
-            addUser.DataBack += ChangeUserToUpdated;
+            addUser.DataBack += isChangedToTrue;
             addUser.ShowDialog();
 
-            if (UserIsUpdated)
+            if (isChanged)
             {
                 MessageBox.Show("User Is Updated Successfully");
-                UserIsUpdated = false;
+                _ReloadUsers();
+                isChanged = false;
             }
             else
             {
                 MessageBox.Show("User Is Not Updated");
             }
 
-            _ReloadUsers();
         }
 
         private void btnAddBook_Click(object sender, EventArgs e)
@@ -88,13 +77,14 @@ namespace WindowsFormsApp1
             //clsBooks.AddBook().ToString();
 
             AddBookForm addBook = new AddBookForm();
-            addBook.DataBack += ChangeBookToAdded;
+            addBook.DataBack += isChangedToTrue;
             addBook.ShowDialog();
 
-            if (BookIsAdded)
+            if (isChanged)
             {
                 MessageBox.Show("Book Is Added Successfully");
-                BookIsAdded = false;
+                _ReloadBooks();
+                isChanged = false;
             }
             else
             {
@@ -102,28 +92,15 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void ChangeUserToAdded(object sender)
+        private void isChangedToTrue(object sender)
         {
-            this.UserIsAdded = true;
-        }
-
-        private void ChangeUserToUpdated(object sender)
-        {
-            this.UserIsUpdated = true;
-        }
-        private void ChangeBookToAdded(object sender)
-        {
-            this.BookIsAdded = true;
-        }
-
-        private void ChangeBookToUpdated(object sender)
-        {
-            this.BookIsUpdated = true;
+            this.isChanged = true;
         }
 
         private void detailInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            UserInfo userInfo = new UserInfo((int)dataGridViewUsers.CurrentRow.Cells[0].Value);
+            userInfo.ShowDialog();
         }
 
         private void tabUsers_Click(object sender, EventArgs e)
@@ -133,11 +110,14 @@ namespace WindowsFormsApp1
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Are You Sure?", "Make Sure", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK) && clsUsers.DeleteUser((int)dataGridViewUsers.CurrentRow.Cells[0].Value))
+            if ((MessageBox.Show("Are You Sure?", "Make Sure", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                &&
+                clsUsers.DeleteUser((int)dataGridViewUsers.CurrentRow.Cells[0].Value))
             {
                 MessageBox.Show("User Is Deleted");
-
-            } else
+                _ReloadUsers();
+            }
+            else
             {
                 MessageBox.Show("User Is Not Deleted");
 
@@ -147,6 +127,60 @@ namespace WindowsFormsApp1
         private void tabBooks_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("Are You Sure?", "Make Sure", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK) && clsBooks.DeleteBook((int)dataGridViewBooks.CurrentRow.Cells[0].Value))
+            {
+                MessageBox.Show("Book Is Deleted");
+                _ReloadBooks();
+            }
+            else
+            {
+                MessageBox.Show("Book Is Not Deleted");
+            }
+        }
+
+        private void borrowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BorrowForm borrowForm = new BorrowForm();
+            borrowForm.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void buttonUserSearch_Click(object sender, EventArgs e)
+        {
+            string search = comboBoxUserSearch.Text.ToString();
+            string value = textBoxUserSearch.Text.ToString();
+
+            if (search == "All")
+            {
+                _ReloadUsers();
+            }
+            else if (search == "Name")
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    dataGridViewUsers.DataSource = clsUsers.FindUsersByName(value);
+                } else
+                {
+                    MessageBox.Show("Field Can't Be Empty");
+                }
+            } else if (search == "Id")
+            {
+                if (int.TryParse(value, out int id)) {
+                    dataGridViewUsers.DataSource = clsUsers.FindUsersById(id);
+                } else
+                {
+                    MessageBox.Show("Field Should Be A Number");
+                }
+            }
         }
     }
 }
