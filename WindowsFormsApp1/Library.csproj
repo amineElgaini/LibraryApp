@@ -67,11 +67,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ctrUserInfo.cs">
+    <Compile Include="CtrlUserInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctrUserInfo.Designer.cs">
-      <DependentUpon>ctrUserInfo.cs</DependentUpon>
+    <Compile Include="CtrlUserInfo.Designer.cs">
+      <DependentUpon>CtrlUserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs">
       <SubType>Form</SubType>
@@ -82,8 +82,8 @@
     <EmbeddedResource Include="AddBookForm.resx">
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctrUserInfo.resx">
-      <DependentUpon>ctrUserInfo.cs</DependentUpon>
+    <EmbeddedResource Include="CtrlUserInfo.resx">
+      <DependentUpon>CtrlUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

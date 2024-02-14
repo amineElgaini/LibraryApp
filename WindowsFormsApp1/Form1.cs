@@ -88,17 +88,17 @@ namespace WindowsFormsApp1
             //clsBooks.AddBook().ToString();
 
             AddBookForm addBook = new AddBookForm();
-            addBook.DataBack += ChangeBookToUpdated;
+            addBook.DataBack += ChangeBookToAdded;
             addBook.ShowDialog();
 
-            if (BookIsUpdated)
+            if (BookIsAdded)
             {
-                MessageBox.Show("Book Is Updated Successfully");
-                BookIsUpdated = false;
+                MessageBox.Show("Book Is Added Successfully");
+                BookIsAdded = false;
             }
             else
             {
-                MessageBox.Show("Book Is Not Updated");
+                MessageBox.Show("Book Is Not Added");
             }
         }
 

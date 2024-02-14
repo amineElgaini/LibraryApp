@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class ctrUserInfo : UserControl
+    public partial class CtrlUserInfo : UserControl
     {
-        public ctrUserInfo()
+        public CtrlUserInfo()
         {
             InitializeComponent();
         }
 
         private void ctrUserInfo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void LoadPersonInfo()
         {
 
         }

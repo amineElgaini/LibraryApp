@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class ctrUserInfo
+    partial class CtrlUserInfo
     {
         /// <summary> 
         /// Required designer variable.
@@ -110,7 +110,7 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "label8";
             // 
-            // ctrUserInfo
+            // CtrlUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,8 +122,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "ctrUserInfo";
-            this.Size = new System.Drawing.Size(253, 164);
+            this.Name = "CtrlUserInfo";
+            this.Size = new System.Drawing.Size(186, 164);
             this.Load += new System.EventHandler(this.ctrUserInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
