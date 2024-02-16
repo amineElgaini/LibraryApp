@@ -38,14 +38,14 @@
             // 
             this.ctrUserInfo1.Location = new System.Drawing.Point(0, 0);
             this.ctrUserInfo1.Name = "ctrUserInfo1";
-            this.ctrUserInfo1.Size = new System.Drawing.Size(357, 209);
+            this.ctrUserInfo1.Size = new System.Drawing.Size(399, 195);
             this.ctrUserInfo1.TabIndex = 0;
             // 
             // UserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(398, 197);
             this.Controls.Add(this.ctrUserInfo1);
             this.Name = "UserInfo";
             this.Text = "UserInfo";

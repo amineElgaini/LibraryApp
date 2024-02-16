@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 
 namespace LibraryDataAccessLayer
 {
@@ -129,7 +130,7 @@ INSERT INTO [dbo].[Books]
 
             }
             finally { connection.Close(); }
-            if (newId != -1)
+            if (newId != -1 && Copies > 0)
                 AddCopies(newId, Copies);
 
             return newId;
@@ -156,6 +157,7 @@ INSERT INTO [dbo].[Books]
             {
                 query += ",(@BookID, 1)";
             }
+
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@BookID", BookId);

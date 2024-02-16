@@ -6,12 +6,24 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LibraryDataAccessLayer;
 
 namespace ClassLibrary1
 {
     public class clsBorrow
     {
-        //BorrowData.AddBorrow()
+        public static bool Borrow(int UserID, int BookID, DateTime BorrowingDate, DateTime DueDate)
+        {
+            return BorrowData.AddBorrow(UserID, BookID, BorrowingDate, DueDate);
+        }
+
+        public static DataTable FetchBorrowing()
+        {
+            return BorrowData.GetAllBorrowing();
+        }
+
+        public static bool IsAvailable(int BookId)
+        {
+            return BorrowData.IsAvailable(BookId);
+        }
     }
 }

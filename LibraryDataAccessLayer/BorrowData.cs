@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Net;
 
 namespace LibraryDataAccessLayer
 {
@@ -76,6 +77,44 @@ namespace LibraryDataAccessLayer
         //    return isFound;
         //}
 
+        public static bool IsAvailable(int BookID)
+        {
+            int copy = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"
+                SELECT copyID from Books b inner join bookCopies bc on b.bookId = bc.bookID
+                    where b.bookID = @BookID and bc.AvailabilityStatus = 1;
+            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@BookID", BookID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int copyId))
+                {
+                    copy = copyId;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (copy > 0);
+        }
+
         public static bool UpdateUser(int UserID, string Name, string LibraryCardNumber, string Email, string image, DateTime BirthDate)
         {
             int updatedRows = 0;
@@ -126,7 +165,7 @@ namespace LibraryDataAccessLayer
             return (updatedRows > 0);
         }
 
-        public static int AddBorrow(int UserID, int BookID, DateTime BorrowingDate, DateTime DueDate)
+        public static bool AddBorrow(int UserID, int BookID, DateTime BorrowingDate, DateTime DueDate)
         {
             int newId = -1;
 
@@ -134,8 +173,9 @@ namespace LibraryDataAccessLayer
 
             string query = @"
                 DECLARE @Copy INT;
-                SET @Copy = (SELECT TOP 1 copyID from Books b inner join bookCopies bc on b.bookId = bc.bookID where b.bookID = @BookID and bc.AvailabilityStatus = 1);
-                print @copy
+                SELECT @Copy = copyID from Books b inner join bookCopies bc on b.bookId = bc.bookID
+                    where b.bookID = @BookID and bc.AvailabilityStatus = 1;
+
                 if @copy is not null
 	                begin
 		                insert into BorrowingRecords(UserID, CopyID, BorrowingDate, DueDate) values(@UserID, @Copy, @BorrowingDate, @DueDate);
@@ -166,56 +206,56 @@ namespace LibraryDataAccessLayer
             }
             catch
             {
-                return newId;
+                return false;
             }
             finally
             {
                 connection.Close();
             }
 
-            return (newId);
+            return (newId > 0);
         }
 
-        public static DataTable FindUsersById(int value)
-        {
-            DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+        //public static DataTable FindUsersById(int value)
+        //{
+        //    DataTable dt = new DataTable();
+        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM Users WHERE UserId = @value";
+        //    string query = "SELECT * FROM Users WHERE UserId = @value";
 
-            SqlCommand command = new SqlCommand(query, connection);
+        //    SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@value", value);
-
-
-            try
-            {
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-
-                {
-                    dt.Load(reader);
-                }
-
-                reader.Close();
+        //    command.Parameters.AddWithValue("@value", value);
 
 
-            }
+        //    try
+        //    {
+        //        connection.Open();
 
-            catch (Exception ex)
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+        //        SqlDataReader reader = command.ExecuteReader();
 
-            return dt;
-        }
+        //        if (reader.HasRows)
+
+        //        {
+        //            dt.Load(reader);
+        //        }
+
+        //        reader.Close();
+
+
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        // Console.WriteLine("Error: " + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+
+        //    return dt;
+        //}
 
         public static DataTable FindUsersByName(string value)
         {
@@ -258,43 +298,43 @@ namespace LibraryDataAccessLayer
             return dt;
         }
 
-        public static bool DeleteUser(int id)
-        {
+        //public static bool DeleteUser(int id)
+        //{
 
-            int result = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+        //    int result = 0;
+        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "Delete FROM Users WHERE userID = @userID";
+        //    string query = "Delete FROM Users WHERE userID = @userID";
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@userID", id);
+        //    SqlCommand command = new SqlCommand(query, connection);
+        //    command.Parameters.AddWithValue("@userID", id);
 
-            try
-            {
-                connection.Open();
+        //    try
+        //    {
+        //        connection.Open();
 
-                result = command.ExecuteNonQuery();
+        //        result = command.ExecuteNonQuery();
 
-            }
-            catch
-            {
-            }
-            finally
-            {
-                connection.Close();
-            }
+        //    }
+        //    catch
+        //    {
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
 
-            return (result > 0);
+        //    return (result > 0);
 
-        }
+        //}
 
-        public static DataTable GetAllUsers()
+        public static DataTable GetAllBorrowing()
         {
 
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM Users";
+            string query = "SELECT * FROM BorrowingRecords br left join fines f on br.BorrowingRecordID = f.BorrowingRecordID";
 
             SqlCommand command = new SqlCommand(query, connection);
 

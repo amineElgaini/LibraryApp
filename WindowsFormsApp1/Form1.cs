@@ -25,12 +25,19 @@ namespace WindowsFormsApp1
 
             dataGridViewBooks.DataSource = clsBooks.FetchBooks();
         }
+        
+        private void _ReloadBorrowing()
+        {
+
+            dataGridViewBorrowing.DataSource = clsBorrow.FetchBorrowing();
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             _ReloadUsers();
             _ReloadBooks();
+            _ReloadBorrowing();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -144,8 +151,10 @@ namespace WindowsFormsApp1
 
         private void borrowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BorrowForm borrowForm = new BorrowForm();
+            BorrowForm borrowForm = new BorrowForm((int)dataGridViewBooks.CurrentRow.Cells[0].Value);
             borrowForm.Show();
+            _ReloadBooks();
+            _ReloadBorrowing();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

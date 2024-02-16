@@ -46,6 +46,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.numericUpDownCopies = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblAddUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBookImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCopies)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +54,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 104);
+            this.label3.Location = new System.Drawing.Point(12, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 25;
@@ -62,7 +63,7 @@
             // 
             // dateTimePickerBirthDate
             // 
-            this.dateTimePickerBirthDate.Location = new System.Drawing.Point(104, 105);
+            this.dateTimePickerBirthDate.Location = new System.Drawing.Point(104, 145);
             this.dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
             this.dateTimePickerBirthDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerBirthDate.TabIndex = 24;
@@ -70,7 +71,7 @@
             // 
             // pictureBoxBookImage
             // 
-            this.pictureBoxBookImage.Location = new System.Drawing.Point(307, 51);
+            this.pictureBoxBookImage.Location = new System.Drawing.Point(307, 91);
             this.pictureBoxBookImage.Name = "pictureBoxBookImage";
             this.pictureBoxBookImage.Size = new System.Drawing.Size(154, 119);
             this.pictureBoxBookImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -81,7 +82,7 @@
             // linkLabelRemoveImage
             // 
             this.linkLabelRemoveImage.AutoSize = true;
-            this.linkLabelRemoveImage.Location = new System.Drawing.Point(382, 26);
+            this.linkLabelRemoveImage.Location = new System.Drawing.Point(382, 66);
             this.linkLabelRemoveImage.Name = "linkLabelRemoveImage";
             this.linkLabelRemoveImage.Size = new System.Drawing.Size(79, 13);
             this.linkLabelRemoveImage.TabIndex = 22;
@@ -92,7 +93,7 @@
             // linkLabelAddImage
             // 
             this.linkLabelAddImage.AutoSize = true;
-            this.linkLabelAddImage.Location = new System.Drawing.Point(304, 26);
+            this.linkLabelAddImage.Location = new System.Drawing.Point(304, 66);
             this.linkLabelAddImage.Name = "linkLabelAddImage";
             this.linkLabelAddImage.Size = new System.Drawing.Size(58, 13);
             this.linkLabelAddImage.TabIndex = 21;
@@ -102,7 +103,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(386, 234);
+            this.btnAdd.Location = new System.Drawing.Point(386, 274);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 20;
@@ -112,7 +113,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(287, 234);
+            this.btnCancel.Location = new System.Drawing.Point(287, 274);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 19;
@@ -123,7 +124,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 206);
+            this.label2.Location = new System.Drawing.Point(12, 246);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 18;
@@ -131,7 +132,7 @@
             // 
             // textBoxDetails
             // 
-            this.textBoxDetails.Location = new System.Drawing.Point(104, 189);
+            this.textBoxDetails.Location = new System.Drawing.Point(104, 229);
             this.textBoxDetails.Multiline = true;
             this.textBoxDetails.Name = "textBoxDetails";
             this.textBoxDetails.Size = new System.Drawing.Size(137, 48);
@@ -140,7 +141,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 51);
+            this.label1.Location = new System.Drawing.Point(12, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 16;
@@ -148,7 +149,7 @@
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(104, 48);
+            this.textBoxTitle.Location = new System.Drawing.Point(104, 88);
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(137, 20);
             this.textBoxTitle.TabIndex = 15;
@@ -156,7 +157,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 77);
+            this.label4.Location = new System.Drawing.Point(12, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 27;
@@ -164,7 +165,7 @@
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(104, 74);
+            this.textBoxISBN.Location = new System.Drawing.Point(104, 114);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(137, 20);
             this.textBoxISBN.TabIndex = 26;
@@ -172,7 +173,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 133);
+            this.label5.Location = new System.Drawing.Point(12, 173);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 29;
@@ -180,7 +181,7 @@
             // 
             // textBoxGenre
             // 
-            this.textBoxGenre.Location = new System.Drawing.Point(104, 131);
+            this.textBoxGenre.Location = new System.Drawing.Point(104, 171);
             this.textBoxGenre.Name = "textBoxGenre";
             this.textBoxGenre.Size = new System.Drawing.Size(137, 20);
             this.textBoxGenre.TabIndex = 28;
@@ -192,7 +193,7 @@
             // 
             // numericUpDownCopies
             // 
-            this.numericUpDownCopies.Location = new System.Drawing.Point(104, 157);
+            this.numericUpDownCopies.Location = new System.Drawing.Point(104, 197);
             this.numericUpDownCopies.Name = "numericUpDownCopies";
             this.numericUpDownCopies.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownCopies.TabIndex = 30;
@@ -200,17 +201,28 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 164);
+            this.label6.Location = new System.Drawing.Point(12, 204);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 31;
             this.label6.Text = "Copies:";
             // 
+            // lblAddUser
+            // 
+            this.lblAddUser.AutoSize = true;
+            this.lblAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.lblAddUser.Location = new System.Drawing.Point(181, 21);
+            this.lblAddUser.Name = "lblAddUser";
+            this.lblAddUser.Size = new System.Drawing.Size(123, 29);
+            this.lblAddUser.TabIndex = 32;
+            this.lblAddUser.Text = "Add Book";
+            // 
             // AddBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 278);
+            this.ClientSize = new System.Drawing.Size(473, 322);
+            this.Controls.Add(this.lblAddUser);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numericUpDownCopies);
             this.Controls.Add(this.label5);
@@ -258,5 +270,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.NumericUpDown numericUpDownCopies;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblAddUser;
     }
 }

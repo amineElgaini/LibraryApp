@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.lblAddUser = new System.Windows.Forms.Label();
+            this.lblForm = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.linkLabelAddImage = new System.Windows.Forms.LinkLabel();
@@ -79,15 +79,15 @@
             this.textBoxEmail.TabIndex = 3;
             this.textBoxEmail.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // lblAddUser
+            // lblForm
             // 
-            this.lblAddUser.AutoSize = true;
-            this.lblAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.lblAddUser.Location = new System.Drawing.Point(161, 9);
-            this.lblAddUser.Name = "lblAddUser";
-            this.lblAddUser.Size = new System.Drawing.Size(118, 29);
-            this.lblAddUser.TabIndex = 5;
-            this.lblAddUser.Text = "Add User";
+            this.lblForm.AutoSize = true;
+            this.lblForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.lblForm.Location = new System.Drawing.Point(184, 9);
+            this.lblForm.Name = "lblForm";
+            this.lblForm.Size = new System.Drawing.Size(66, 29);
+            this.lblForm.TabIndex = 5;
+            this.lblForm.Text = "User";
             // 
             // btnCancel
             // 
@@ -166,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 332);
+            this.ClientSize = new System.Drawing.Size(460, 323);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePickerBirthDate);
             this.Controls.Add(this.pictureBoxUserImage);
@@ -174,7 +174,7 @@
             this.Controls.Add(this.linkLabelAddImage);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lblAddUser);
+            this.Controls.Add(this.lblForm);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.label1);
@@ -194,7 +194,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.Label lblAddUser;
+        private System.Windows.Forms.Label lblForm;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.LinkLabel linkLabelAddImage;

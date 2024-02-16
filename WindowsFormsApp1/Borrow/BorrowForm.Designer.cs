@@ -30,13 +30,14 @@
         {
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.buttonBorrow = new System.Windows.Forms.Button();
-            this.ctrUserSearch1 = new WindowsFormsApp1.ctrUserSearch();
             this.textBoxNumberOfDays = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ctrUserSearch1 = new WindowsFormsApp1.ctrUserSearch();
             this.SuspendLayout();
             // 
             // buttonBorrow
             // 
-            this.buttonBorrow.Location = new System.Drawing.Point(328, 286);
+            this.buttonBorrow.Location = new System.Drawing.Point(229, 262);
             this.buttonBorrow.Name = "buttonBorrow";
             this.buttonBorrow.Size = new System.Drawing.Size(75, 23);
             this.buttonBorrow.TabIndex = 18;
@@ -44,26 +45,36 @@
             this.buttonBorrow.UseVisualStyleBackColor = true;
             this.buttonBorrow.Click += new System.EventHandler(this.buttonBorrow_Click);
             // 
+            // textBoxNumberOfDays
+            // 
+            this.textBoxNumberOfDays.Location = new System.Drawing.Point(113, 263);
+            this.textBoxNumberOfDays.Name = "textBoxNumberOfDays";
+            this.textBoxNumberOfDays.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNumberOfDays.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 267);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Number Of Days";
+            // 
             // ctrUserSearch1
             // 
             this.ctrUserSearch1.Location = new System.Drawing.Point(1, 0);
             this.ctrUserSearch1.Name = "ctrUserSearch1";
-            this.ctrUserSearch1.Size = new System.Drawing.Size(480, 280);
+            this.ctrUserSearch1.Size = new System.Drawing.Size(431, 257);
             this.ctrUserSearch1.TabIndex = 0;
             this.ctrUserSearch1.OnUserSelected += new System.Action<int>(this.ctrUserSearch1_OnUserSelected_1);
-            // 
-            // textBoxNumberOfDays
-            // 
-            this.textBoxNumberOfDays.Location = new System.Drawing.Point(23, 286);
-            this.textBoxNumberOfDays.Name = "textBoxNumberOfDays";
-            this.textBoxNumberOfDays.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNumberOfDays.TabIndex = 19;
             // 
             // BorrowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 511);
+            this.ClientSize = new System.Drawing.Size(444, 300);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNumberOfDays);
             this.Controls.Add(this.buttonBorrow);
             this.Controls.Add(this.ctrUserSearch1);
@@ -81,5 +92,6 @@
         private ctrUserSearch ctrUserSearch1;
         private System.Windows.Forms.Button buttonBorrow;
         private System.Windows.Forms.TextBox textBoxNumberOfDays;
+        private System.Windows.Forms.Label label1;
     }
 }
