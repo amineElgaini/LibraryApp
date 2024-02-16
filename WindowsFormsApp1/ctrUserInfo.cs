@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
             {
                 labelUserId.Text = user.UserId.ToString();
                 labelName.Text = user.Name;
+                labelLibraryCardNumber.Text = user.LibraryCardNumber;
                 pictureBoxUserImage.ImageLocation = user.Image;
 
             }
@@ -40,6 +41,11 @@ namespace WindowsFormsApp1
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -191,5 +191,37 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void payToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("Did He Paid?", "Make Sure", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK))
+            {
+                if (clsBorrow.Pay((int)dataGridViewBorrowing.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("The Payment Received Successfully");
+                }
+            }
+        }
+
+        private void tabBorrowing_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void returnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("Did He Really Returned The Book?", "Make Sure", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK))
+            {
+                if (clsBorrow.Return((int)dataGridViewBorrowing.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("The Returnement Received Successfully");
+                }
+            }
+        }
+
+        private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

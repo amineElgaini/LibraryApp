@@ -25,5 +25,15 @@ namespace ClassLibrary1
         {
             return BorrowData.IsAvailable(BookId);
         }
+
+        public static bool Pay(int BorrowingID)
+        {
+            return BorrowData.Pay(BorrowingID);
+        }
+
+        public static bool Return(int BorrowingID)
+        {
+            return BorrowData.Return(BorrowingID);
+        }
     }
 }

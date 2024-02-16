@@ -48,8 +48,9 @@
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabBorrowing = new System.Windows.Forms.TabPage();
             this.dataGridViewBorrowing = new System.Windows.Forms.DataGridView();
-            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.contextMenuStripBorrowing = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.payToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.returnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
@@ -59,6 +60,7 @@
             this.contextMenuStripBook.SuspendLayout();
             this.tabBorrowing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBorrowing)).BeginInit();
+            this.contextMenuStripBorrowing.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -143,6 +145,7 @@
             this.dataGridViewUsers.ReadOnly = true;
             this.dataGridViewUsers.Size = new System.Drawing.Size(786, 330);
             this.dataGridViewUsers.TabIndex = 0;
+            this.dataGridViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellContentClick);
             // 
             // contextMenuStripUser
             // 
@@ -243,6 +246,7 @@
             this.tabBorrowing.TabIndex = 2;
             this.tabBorrowing.Text = "Borrowing";
             this.tabBorrowing.UseVisualStyleBackColor = true;
+            this.tabBorrowing.Click += new System.EventHandler(this.tabBorrowing_Click);
             // 
             // dataGridViewBorrowing
             // 
@@ -250,12 +254,35 @@
             this.dataGridViewBorrowing.AllowUserToDeleteRows = false;
             this.dataGridViewBorrowing.AllowUserToOrderColumns = true;
             this.dataGridViewBorrowing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBorrowing.ContextMenuStrip = this.contextMenuStripBorrowing;
             this.dataGridViewBorrowing.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewBorrowing.Location = new System.Drawing.Point(0, 94);
             this.dataGridViewBorrowing.Name = "dataGridViewBorrowing";
             this.dataGridViewBorrowing.ReadOnly = true;
             this.dataGridViewBorrowing.Size = new System.Drawing.Size(792, 330);
             this.dataGridViewBorrowing.TabIndex = 2;
+            // 
+            // contextMenuStripBorrowing
+            // 
+            this.contextMenuStripBorrowing.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.payToolStripMenuItem,
+            this.returnToolStripMenuItem});
+            this.contextMenuStripBorrowing.Name = "contextMenuStripBorrowing";
+            this.contextMenuStripBorrowing.Size = new System.Drawing.Size(110, 48);
+            // 
+            // payToolStripMenuItem
+            // 
+            this.payToolStripMenuItem.Name = "payToolStripMenuItem";
+            this.payToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.payToolStripMenuItem.Text = "Pay";
+            this.payToolStripMenuItem.Click += new System.EventHandler(this.payToolStripMenuItem_Click);
+            // 
+            // returnToolStripMenuItem
+            // 
+            this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.returnToolStripMenuItem.Text = "Return";
+            this.returnToolStripMenuItem.Click += new System.EventHandler(this.returnToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -276,6 +303,7 @@
             this.contextMenuStripBook.ResumeLayout(false);
             this.tabBorrowing.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBorrowing)).EndInit();
+            this.contextMenuStripBorrowing.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -301,8 +329,9 @@
         private System.Windows.Forms.ComboBox comboBoxUserSearch;
         private System.Windows.Forms.TextBox textBoxUserSearch;
         private System.Windows.Forms.Button buttonUserSearch;
-        private System.DirectoryServices.DirectoryEntry directoryEntry1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripBorrowing;
+        private System.Windows.Forms.ToolStripMenuItem payToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem returnToolStripMenuItem;
     }
 }
 

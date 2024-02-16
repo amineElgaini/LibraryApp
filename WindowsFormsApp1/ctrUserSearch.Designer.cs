@@ -31,8 +31,8 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSearchValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrUserInfo1 = new WindowsFormsApp1.ctrUserInfo();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ctrUserInfo1 = new WindowsFormsApp1.ctrUserInfo();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,13 +63,6 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "ID:";
             // 
-            // ctrUserInfo1
-            // 
-            this.ctrUserInfo1.Location = new System.Drawing.Point(6, 42);
-            this.ctrUserInfo1.Name = "ctrUserInfo1";
-            this.ctrUserInfo1.Size = new System.Drawing.Size(401, 195);
-            this.ctrUserInfo1.TabIndex = 12;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ctrUserInfo1);
@@ -82,6 +75,14 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Find User";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // ctrUserInfo1
+            // 
+            this.ctrUserInfo1.Location = new System.Drawing.Point(6, 42);
+            this.ctrUserInfo1.Name = "ctrUserInfo1";
+            this.ctrUserInfo1.Size = new System.Drawing.Size(401, 195);
+            this.ctrUserInfo1.TabIndex = 12;
             // 
             // ctrUserSearch
             // 
