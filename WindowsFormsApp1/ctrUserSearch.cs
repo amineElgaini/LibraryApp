@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LibraryBusinessLayer;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -14,6 +8,13 @@ namespace WindowsFormsApp1
     {
         public event Action<int> OnUserSelected;
         protected virtual void UserSelected(int UserId)
+        {
+            Action<int> handler = OnUserSelected;
+            if (handler != null)
+            {
+                handler(UserId);
+            }
+        }
 
         public ctrUserSearch()
         {
@@ -33,9 +34,19 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
 
+            if (OnUserSelected != null && int.TryParse(textBoxSearchValue.Text, out int value))
+            {
+                ctrUserInfo1.LoadUserInfo(value);
+                UserSelected(value);
+            }
         }
 
         private void textBoxSearchValue_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBorrow_Click(object sender, EventArgs e)
         {
 
         }

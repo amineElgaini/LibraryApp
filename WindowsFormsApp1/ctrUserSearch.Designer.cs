@@ -77,7 +77,7 @@
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.ctrUserInfo1);
             this.Name = "ctrUserSearch";
-            this.Size = new System.Drawing.Size(480, 280);
+            this.Size = new System.Drawing.Size(522, 332);
             this.Load += new System.EventHandler(this.ctrUserSearch_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

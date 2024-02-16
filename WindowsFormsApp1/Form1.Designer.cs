@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabUsers = new System.Windows.Forms.TabPage();
+            this.buttonUserSearch = new System.Windows.Forms.Button();
+            this.textBoxUserSearch = new System.Windows.Forms.TextBox();
+            this.comboBoxUserSearch = new System.Windows.Forms.ComboBox();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.contextMenuStripUser = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -42,12 +45,11 @@
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.contextMenuStripBook = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabBorrowing = new System.Windows.Forms.TabPage();
             this.dataGridViewBorrowing = new System.Windows.Forms.DataGridView();
-            this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxUserSearch = new System.Windows.Forms.ComboBox();
-            this.textBoxUserSearch = new System.Windows.Forms.TextBox();
-            this.buttonUserSearch = new System.Windows.Forms.Button();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
@@ -86,6 +88,37 @@
             this.tabUsers.Text = "Users";
             this.tabUsers.UseVisualStyleBackColor = true;
             this.tabUsers.Click += new System.EventHandler(this.tabUsers_Click);
+            // 
+            // buttonUserSearch
+            // 
+            this.buttonUserSearch.Location = new System.Drawing.Point(252, 63);
+            this.buttonUserSearch.Name = "buttonUserSearch";
+            this.buttonUserSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonUserSearch.TabIndex = 8;
+            this.buttonUserSearch.Text = "Search";
+            this.buttonUserSearch.UseVisualStyleBackColor = true;
+            this.buttonUserSearch.Click += new System.EventHandler(this.buttonUserSearch_Click);
+            // 
+            // textBoxUserSearch
+            // 
+            this.textBoxUserSearch.Location = new System.Drawing.Point(146, 64);
+            this.textBoxUserSearch.Name = "textBoxUserSearch";
+            this.textBoxUserSearch.Size = new System.Drawing.Size(100, 20);
+            this.textBoxUserSearch.TabIndex = 7;
+            // 
+            // comboBoxUserSearch
+            // 
+            this.comboBoxUserSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUserSearch.FormattingEnabled = true;
+            this.comboBoxUserSearch.Items.AddRange(new object[] {
+            "All",
+            "Id",
+            "Name"});
+            this.comboBoxUserSearch.Location = new System.Drawing.Point(8, 64);
+            this.comboBoxUserSearch.Name = "comboBoxUserSearch";
+            this.comboBoxUserSearch.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxUserSearch.TabIndex = 5;
+            this.comboBoxUserSearch.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnAddUser
             // 
@@ -194,6 +227,13 @@
             this.deleteToolStripMenuItem1.Text = "Delete";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
+            // borrowToolStripMenuItem
+            // 
+            this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.borrowToolStripMenuItem.Text = "Borrow";
+            this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
+            // 
             // tabBorrowing
             // 
             this.tabBorrowing.Controls.Add(this.dataGridViewBorrowing);
@@ -216,44 +256,6 @@
             this.dataGridViewBorrowing.ReadOnly = true;
             this.dataGridViewBorrowing.Size = new System.Drawing.Size(792, 330);
             this.dataGridViewBorrowing.TabIndex = 2;
-            // 
-            // borrowToolStripMenuItem
-            // 
-            this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.borrowToolStripMenuItem.Text = "Borrow";
-            this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
-            // 
-            // comboBoxUserSearch
-            // 
-            this.comboBoxUserSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxUserSearch.FormattingEnabled = true;
-            this.comboBoxUserSearch.Items.AddRange(new object[] {
-            "All",
-            "Id",
-            "Name"});
-            this.comboBoxUserSearch.Location = new System.Drawing.Point(8, 64);
-            this.comboBoxUserSearch.Name = "comboBoxUserSearch";
-            this.comboBoxUserSearch.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxUserSearch.TabIndex = 5;
-            this.comboBoxUserSearch.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // textBoxUserSearch
-            // 
-            this.textBoxUserSearch.Location = new System.Drawing.Point(146, 64);
-            this.textBoxUserSearch.Name = "textBoxUserSearch";
-            this.textBoxUserSearch.Size = new System.Drawing.Size(100, 20);
-            this.textBoxUserSearch.TabIndex = 7;
-            // 
-            // buttonUserSearch
-            // 
-            this.buttonUserSearch.Location = new System.Drawing.Point(252, 63);
-            this.buttonUserSearch.Name = "buttonUserSearch";
-            this.buttonUserSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonUserSearch.TabIndex = 8;
-            this.buttonUserSearch.Text = "Search";
-            this.buttonUserSearch.UseVisualStyleBackColor = true;
-            this.buttonUserSearch.Click += new System.EventHandler(this.buttonUserSearch_Click);
             // 
             // Form1
             // 
@@ -299,6 +301,8 @@
         private System.Windows.Forms.ComboBox comboBoxUserSearch;
         private System.Windows.Forms.TextBox textBoxUserSearch;
         private System.Windows.Forms.Button buttonUserSearch;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

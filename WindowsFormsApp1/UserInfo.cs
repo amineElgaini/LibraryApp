@@ -15,13 +15,9 @@ namespace WindowsFormsApp1
 
         private void UserInfo_Load(object sender, System.EventArgs e)
         {
-            ctrUserInfo1.LoadUserInfo(userId);
+            //ctrUserInfo1.LoadUserInfo(userId);
             
         }
 
-        private void ctrUserInfo1_Load(object sender, System.EventArgs e)
-        {
-
-        }
     }
 }
