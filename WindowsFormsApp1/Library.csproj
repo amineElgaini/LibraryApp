@@ -71,12 +71,6 @@
     <Compile Include="ctrUserSearch.Designer.cs">
       <DependentUpon>ctrUserSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctrUserSearchNav.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ctrUserSearchNav.Designer.cs">
-      <DependentUpon>ctrUserSearchNav.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,9 +102,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrUserSearch.resx">
       <DependentUpon>ctrUserSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ctrUserSearchNav.resx">
-      <DependentUpon>ctrUserSearchNav.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

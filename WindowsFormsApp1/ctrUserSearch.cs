@@ -12,6 +12,9 @@ namespace WindowsFormsApp1
 {
     public partial class ctrUserSearch : UserControl
     {
+        public event Action<int> OnUserSelected;
+        protected virtual void UserSelected(int UserId)
+
         public ctrUserSearch()
         {
             InitializeComponent();
@@ -22,14 +25,19 @@ namespace WindowsFormsApp1
 
         }
 
-        }
         private void ctrUserSearchNav1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void ctrUserInfo1_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBoxSearchValue_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
