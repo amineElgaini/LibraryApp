@@ -3,7 +3,6 @@ C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\Window
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BorrowForm.resources
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ctrUserInfo.resources
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ctrUserSearch.resources
-C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AddUserForm.resources
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.UserInfo.resources
@@ -19,3 +18,4 @@ C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\bin\Debug\Librar
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\Library.csproj.CopyComplete
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Amine ELGAINI\source\repos\LibraryApp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MainWindow.resources

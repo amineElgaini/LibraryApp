@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -139,7 +139,6 @@
             this.dataGridViewUsers.AllowUserToOrderColumns = true;
             this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUsers.ContextMenuStrip = this.contextMenuStripUser;
-            this.dataGridViewUsers.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewUsers.Location = new System.Drawing.Point(3, 91);
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.ReadOnly = true;
@@ -208,7 +207,6 @@
             this.dataGridViewBooks.AllowUserToOrderColumns = true;
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBooks.ContextMenuStrip = this.contextMenuStripBook;
-            this.dataGridViewBooks.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewBooks.Location = new System.Drawing.Point(3, 91);
             this.dataGridViewBooks.Name = "dataGridViewBooks";
             this.dataGridViewBooks.ReadOnly = true;
@@ -255,7 +253,6 @@
             this.dataGridViewBorrowing.AllowUserToOrderColumns = true;
             this.dataGridViewBorrowing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBorrowing.ContextMenuStrip = this.contextMenuStripBorrowing;
-            this.dataGridViewBorrowing.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewBorrowing.Location = new System.Drawing.Point(0, 94);
             this.dataGridViewBorrowing.Name = "dataGridViewBorrowing";
             this.dataGridViewBorrowing.ReadOnly = true;

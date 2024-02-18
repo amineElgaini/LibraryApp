@@ -36,8 +36,8 @@ namespace WindowsFormsApp1
 
             if (OnUserSelected != null && int.TryParse(textBoxSearchValue.Text, out int value))
             {
-                ctrUserInfo1.LoadUserInfo(value);
-                UserSelected(value);
+                if (ctrUserInfo1.LoadUserInfo(value))
+                    UserSelected(value);
             }
         }
 
@@ -52,6 +52,11 @@ namespace WindowsFormsApp1
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ctrUserInfo1_Load(object sender, EventArgs e)
         {
 
         }

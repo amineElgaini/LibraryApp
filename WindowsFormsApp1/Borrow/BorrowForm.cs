@@ -15,6 +15,10 @@ namespace WindowsFormsApp1
     {
         public int userId = -1;
         public int bookId = -1;
+        private BorrowForm()
+        {
+
+        }
         public BorrowForm(int bookId)
         {
             InitializeComponent();
@@ -23,6 +27,12 @@ namespace WindowsFormsApp1
 
         private void BorrowFrom_Load(object sender, EventArgs e)
         {
+            if (!clsBorrow.IsAvailable(bookId))
+            {
+                this.Close();
+                MessageBox.Show("Book Is Not Available");
+            }
+
         }
 
         private void ctrUserSearch1_OnUserSelected(int obj)
@@ -37,24 +47,26 @@ namespace WindowsFormsApp1
 
         private void buttonBorrow_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBoxNumberOfDays.Text, out int days))
+            if (userId == -1) { 
+                MessageBox.Show("User Not Found");
+            }else if (!int.TryParse(textBoxNumberOfDays.Text, out int days)) { 
+                MessageBox.Show("Please Enter A Valide Number For Borrowing Days");
+            } else
             {
                 DateTime StartDate = DateTime.Now;
                 DateTime DueDate = StartDate.AddDays(days);
-                if (userId == -1)
-                    MessageBox.Show("User Not Found");
-
-                if (bookId == -1)
-                    MessageBox.Show("Book Not Found");
-
-                if (!clsBorrow.IsAvailable(bookId))
-                    MessageBox.Show("Book Is Not Available");
 
                 if (clsBorrow.Borrow(userId, bookId, StartDate, DueDate))
                     MessageBox.Show("The User Did Borrow The Book");
                 else
                     MessageBox.Show("The User Didn't Borrow The Book");
+                this.Close();
             }
+        }
+
+        private void ctrUserSearch1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

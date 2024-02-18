@@ -83,7 +83,7 @@
             // 
             this.lblForm.AutoSize = true;
             this.lblForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.lblForm.Location = new System.Drawing.Point(184, 9);
+            this.lblForm.Location = new System.Drawing.Point(150, 9);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(66, 29);
             this.lblForm.TabIndex = 5;

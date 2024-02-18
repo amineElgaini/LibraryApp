@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
 
         }
 
-        public void LoadUserInfo(int id)
+        public bool LoadUserInfo(int id)
         {
             clsUsers user = clsUsers.GetUserByID(id);
             if (user != null)
@@ -35,8 +35,12 @@ namespace WindowsFormsApp1
                 labelName.Text = user.Name;
                 labelLibraryCardNumber.Text = user.LibraryCardNumber;
                 pictureBoxUserImage.ImageLocation = user.Image;
-
+                return true;
+            } else
+            {
+                MessageBox.Show("User Is Not Found");
             }
+            return false;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

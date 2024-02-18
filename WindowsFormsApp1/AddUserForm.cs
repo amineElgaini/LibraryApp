@@ -40,9 +40,13 @@ namespace WindowsFormsApp1
         private void Form2_Load(object sender, EventArgs e)
         {
             if (mode == Mode.add)
+            {
                 User = new clsUsers();
+                lblForm.Text = $"Add New User";
+            }
             else
             {
+                lblForm.Text = $"Update User [{this.userId}]";
                 User = clsUsers.FindUserById(userId);
 
                 if (User == null)

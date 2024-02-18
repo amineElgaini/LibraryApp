@@ -68,6 +68,7 @@
             this.ctrUserSearch1.Size = new System.Drawing.Size(431, 257);
             this.ctrUserSearch1.TabIndex = 0;
             this.ctrUserSearch1.OnUserSelected += new System.Action<int>(this.ctrUserSearch1_OnUserSelected_1);
+            this.ctrUserSearch1.Load += new System.EventHandler(this.ctrUserSearch1_Load);
             // 
             // BorrowForm
             // 

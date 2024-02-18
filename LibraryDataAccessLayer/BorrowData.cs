@@ -150,7 +150,7 @@ namespace LibraryDataAccessLayer
 
             string query = @"
                 
-	            UPDATE fines SET PaymentStatus = 1 where BorrowingRecordID =  @BorrowingID
+	            UPDATE fines SET PaymentStatus = 1 where BorrowingRecordID = @BorrowingID and PaymentStatus = 0
             ";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -189,9 +189,14 @@ namespace LibraryDataAccessLayer
 	
 	                DECLARE @CopyID INT, @UserID INT, @NumberOfLateDays INT, @FineAmount INT;
 	
-	                select @CopyID = CopyID, @UserID = UserID, @NumberOfLateDays = DATEDIFF(day, GETDATE(), DueDate),
-	                @FineAmount = (DATEDIFF(day, ActualReturnDate, BorrowingDate) * (SELECT DefaultFinePerDay FROM Settings))
+	                select @CopyID = CopyID, @UserID = UserID, @NumberOfLateDays = DATEDIFF(day, DueDate, GETDATE()),
+	                @FineAmount = (DATEDIFF(day, BorrowingDate, ActualReturnDate) * (SELECT DefaultFinePerDay FROM Settings))
 	                from BorrowingRecords Br where BorrowingRecordID = @BorrowingID;
+
+                    if @FineAmount < 0
+                    begin
+                        set @FineAmount = 0;
+                    end
 	
 	                INSERT INTO Fines(UserID, BorrowingRecordID, NumberOfLateDays, FineAmount, PaymentStatus)
 	                VALUES(@UserID, @BorrowingID, @NumberOfLateDays, @FineAmount, 0);
