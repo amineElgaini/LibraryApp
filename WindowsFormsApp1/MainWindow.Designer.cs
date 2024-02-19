@@ -212,6 +212,7 @@
             this.dataGridViewBooks.ReadOnly = true;
             this.dataGridViewBooks.Size = new System.Drawing.Size(786, 330);
             this.dataGridViewBooks.TabIndex = 1;
+            this.dataGridViewBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooks_CellContentClick);
             // 
             // contextMenuStripBook
             // 
@@ -252,12 +253,14 @@
             this.dataGridViewBorrowing.AllowUserToDeleteRows = false;
             this.dataGridViewBorrowing.AllowUserToOrderColumns = true;
             this.dataGridViewBorrowing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBorrowing.ContextMenuStrip = this.contextMenuStripBorrowing;
             this.dataGridViewBorrowing.Location = new System.Drawing.Point(0, 94);
             this.dataGridViewBorrowing.Name = "dataGridViewBorrowing";
             this.dataGridViewBorrowing.ReadOnly = true;
             this.dataGridViewBorrowing.Size = new System.Drawing.Size(792, 330);
             this.dataGridViewBorrowing.TabIndex = 2;
+            this.dataGridViewBorrowing.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBorrowing_CellContentClick);
+            this.dataGridViewBorrowing.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewBorrowing_CellMouseDown);
+            this.dataGridViewBorrowing.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBorrowing_CellValueChanged);
             // 
             // contextMenuStripBorrowing
             // 
@@ -281,13 +284,13 @@
             this.returnToolStripMenuItem.Text = "Return";
             this.returnToolStripMenuItem.Click += new System.EventHandler(this.returnToolStripMenuItem_Click);
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);

@@ -1,6 +1,8 @@
 ﻿using ClassLibrary1;
 using LibraryBusinessLayer;
 using System;
+using System.Diagnostics.Eventing.Reader;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -197,7 +199,12 @@ namespace WindowsFormsApp1
         {
             if ((MessageBox.Show("Did He Paid?", "Make Sure", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK))
             {
-                if (clsBorrow.Pay((int)dataGridViewBorrowing.CurrentRow.Cells[0].Value))
+                int value = (int)dataGridViewBorrowing.CurrentRow.Cells[0].Value;
+                if (!clsBorrow.IsBookIsReturned(value))
+                {
+                    MessageBox.Show("Return The Book First Then Take The Fee");
+                }
+                else if (clsBorrow.Pay(value))
                 {
                     _ReloadBorrowing();
                     MessageBox.Show("The Payment Received Successfully");
@@ -224,6 +231,43 @@ namespace WindowsFormsApp1
         }
 
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewBorrowing_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+
+        private void dataGridViewBorrowing_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+           
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewCell newCell = dataGridViewBorrowing[e.ColumnIndex, e.RowIndex];
+                dataGridViewBorrowing.CurrentCell = newCell;
+
+                ToolStripMenuItem returnItem = contextMenuStripBorrowing.Items["returnToolStripMenuItem"] as ToolStripMenuItem;
+                ToolStripMenuItem payItem = contextMenuStripBorrowing.Items["payToolStripMenuItem"] as ToolStripMenuItem;
+
+
+                string actualReturnDate = dataGridViewBorrowing.Rows[e.RowIndex].Cells["ActualReturnDate"].Value.ToString();
+                string paymentStatus = dataGridViewBorrowing.Rows[e.RowIndex].Cells["PaymentStatus"].Value.ToString();
+
+                returnItem.Enabled = string.IsNullOrEmpty(actualReturnDate);
+                payItem.Enabled = (!string.IsNullOrEmpty(actualReturnDate) && !(paymentStatus.ToLower()=="true"));
+
+                contextMenuStripBorrowing.Show(Cursor.Position);
+            }
+        }
+
+        private void dataGridViewBorrowing_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

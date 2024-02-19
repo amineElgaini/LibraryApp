@@ -13,6 +13,43 @@ namespace LibraryDataAccessLayer
     public class BorrowData
     {
 
+        public static bool IsBookIsReturned(int BorrowingId)
+        {
+            bool isReturned = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"
+                SELECT top 1 found=1 from BorrowingRecords where ActualReturnDate is not null AND BorrowingRecordID=@BorrowingId;
+            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@BorrowingId", BorrowingId);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int value))
+                {
+                    isReturned = (value == 1);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isReturned;
+        }
+
         public static bool IsAvailable(int BookID)
         {
             int copy = -1;

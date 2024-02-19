@@ -15,6 +15,10 @@ namespace ClassLibrary1
         {
             return BorrowData.AddBorrow(UserID, BookID, BorrowingDate, DueDate);
         }
+        public static bool IsBookIsReturned(int id)
+        {
+            return BorrowData.IsBookIsReturned(id);
+        }
 
         public static DataTable FetchBorrowing()
         {
