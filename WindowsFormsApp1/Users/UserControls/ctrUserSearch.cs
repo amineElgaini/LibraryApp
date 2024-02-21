@@ -33,7 +33,6 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (OnUserSelected != null && int.TryParse(textBoxSearchValue.Text, out int value))
             {
                 if (ctrUserInfo1.LoadUserInfo(value))

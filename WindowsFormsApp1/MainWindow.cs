@@ -2,6 +2,8 @@
 using LibraryBusinessLayer;
 using System;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 
@@ -10,10 +12,26 @@ namespace WindowsFormsApp1
     public partial class MainWindow : Form
     {
         bool isChanged = false;
+        bool isLoged = false;
+        private void IsLoged(object sender, bool isLoged)
+        {
+            this.isLoged = isLoged;
+        }
 
         public MainWindow()
         {
+
+            Login login = new Login();
+            login.DataBack += IsLoged;
+            login.ShowDialog();
+            if (!isLoged)
+            {
+                this.Close();
+                MessageBox.Show("You Are Not Loged In");    
+            }
+
             InitializeComponent();
+
         }
 
         private void _ReloadUsers()
@@ -40,6 +58,13 @@ namespace WindowsFormsApp1
             _ReloadUsers();
             _ReloadBooks();
             _ReloadBorrowing();
+
+            // check
+            notifyIcon1.Icon = SystemIcons.Application;
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+            notifyIcon1.BalloonTipTitle = "Your Book Is Available";
+            notifyIcon1.BalloonTipText = "Title: [???]";
+            notifyIcon1.ShowBalloonTip(1000);
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -154,7 +179,7 @@ namespace WindowsFormsApp1
         private void borrowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BorrowForm borrowForm = new BorrowForm((int)dataGridViewBooks.CurrentRow.Cells[0].Value);
-            borrowForm.Show();
+            borrowForm.ShowDialog();
             _ReloadBooks();
             _ReloadBorrowing();
         }
@@ -239,7 +264,6 @@ namespace WindowsFormsApp1
         {
         }
 
-
         private void dataGridViewBorrowing_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
            
@@ -250,7 +274,6 @@ namespace WindowsFormsApp1
 
                 ToolStripMenuItem returnItem = contextMenuStripBorrowing.Items["returnToolStripMenuItem"] as ToolStripMenuItem;
                 ToolStripMenuItem payItem = contextMenuStripBorrowing.Items["payToolStripMenuItem"] as ToolStripMenuItem;
-
 
                 string actualReturnDate = dataGridViewBorrowing.Rows[e.RowIndex].Cells["ActualReturnDate"].Value.ToString();
                 string paymentStatus = dataGridViewBorrowing.Rows[e.RowIndex].Cells["PaymentStatus"].Value.ToString();
@@ -268,6 +291,11 @@ namespace WindowsFormsApp1
         }
 
         private void dataGridViewBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
         }

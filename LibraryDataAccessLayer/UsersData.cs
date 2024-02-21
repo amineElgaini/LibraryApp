@@ -29,7 +29,7 @@ namespace LibraryDataAccessLayer
                 {
                     isFound = true;
 
-                    Name = (string)reader["Name"];
+                    Name = (string)reader["UserName"];
                     Email = (string)reader["Email"];
                     if (reader["BirthDate"] != DBNull.Value)
                     {
@@ -82,7 +82,7 @@ namespace LibraryDataAccessLayer
                 UPDATE
                     Users
                 SET
-                    name = @name,
+                    UserName = @name,
                     Email = @Email,
                     LibraryCardNumber = @LibraryCardNumber,
                     image = @image,
@@ -96,7 +96,7 @@ namespace LibraryDataAccessLayer
             command.Parameters.AddWithValue("@UserID", UserID);
             command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@LibraryCardNumber", LibraryCardNumber);
-            command.Parameters.AddWithValue("@Name", Name);
+            command.Parameters.AddWithValue("@UserName", Name);
             command.Parameters.AddWithValue("@BirthDate", BirthDate);
 
             if (image != "" && image != null)
@@ -127,14 +127,14 @@ namespace LibraryDataAccessLayer
             int newId = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = @"INSERT INTO Users (Name, Email, LibraryCardNumber, image ,BirthDate) VALUES (@Name, @Email, @LibraryCardNumber, @image, @BirthDate);
+            string query = @"INSERT INTO Users (UserName, Email, LibraryCardNumber, image ,BirthDate) VALUES (@Name, @Email, @LibraryCardNumber, @image, @BirthDate);
             SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@LibraryCardNumber", LibraryCardNumber);
-            command.Parameters.AddWithValue("@Name", Name);
+            command.Parameters.AddWithValue("@UserName", Name);
             command.Parameters.AddWithValue("@BirthDate", BirthDate);
 
             if (image != "" && image != null)
@@ -212,7 +212,7 @@ namespace LibraryDataAccessLayer
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM Users WHERE Name like '%' + @value + '%'";
+            string query = "SELECT * FROM Users WHERE UserName like '%' + @value + '%'";
 
             SqlCommand command = new SqlCommand(query, connection);
 
